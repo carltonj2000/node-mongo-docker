@@ -4,6 +4,10 @@ const path = require("path");
 const http = require("http");
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const morgan = require("morgan");
+
+const routes = require("./routes");
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -13,21 +17,24 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => console.log("Connection to mongo successful!"))
-  .catch((err) => console.error("Connection to mongo failed! ${err}"));
+  .catch((err) => console.error(`Connection to mongo failed! ${err}`));
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(morgan("tiny"));
+app.use(cors());
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get("/:rest", (req, res) => res.send(`Hi from ${req.path}`));
+app.use("/stats", routes.stats);
 
 app.use((req, res, next) => {
   res.status(404);
-  res.send("failed");
+  res.send(`invalid route ${req.url}`);
   next();
 });
 
-const { PORT } = process.env;
-app.listen(PORT, () => console.log(`api server running on port ${PORT}`));
+const PORT = process.env.PORT | 4000;
+const server = http.createServer(app);
+server.listen(PORT, () => console.log(`api server running on port ${PORT}`));

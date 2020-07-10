@@ -1,8 +1,9 @@
 # React, Node, Express, MongoDB and Docker
 
-Code in this repository is based on the
-[Docker Node, React, MongoDB](https://youtu.be/kTPlHXLponE)
-video.
+Code in this repository is based on the following videos.
+
+- [Docker Node, React, MongoDB - Part 2](https://youtu.be/kTPlHXLponE)
+- [Docker Node, React, MongoDB - Part 2](https://youtu.be/XDG3bNFV08s)
 
 Commands:
 
