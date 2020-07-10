@@ -6,12 +6,14 @@ for the backend.
 
 ## History
 
-Code in this repository is based on the following videos.
+Code in this repository is based on the following videos and
+the repository for the video can be found
+[here](https://github.com/Mau5Machine/docker-course).
 
 - [Docker Node, React, MongoDB - Part 2](https://youtu.be/kTPlHXLponE)
 - [Docker Node, React, MongoDB - Part 2](https://youtu.be/XDG3bNFV08s)
 
-Commands:
+## Commands
 
 - `docker network create app-net`
 - `docker volume create dbdata`
