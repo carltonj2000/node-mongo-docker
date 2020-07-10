@@ -12,7 +12,8 @@ const Stats = (props) => {
   const { stats, setStats } = props;
 
   useEffect(() => {
-    fetch("http://localhost:4000/stats")
+    //fetch("http://localhost:4000/stats")
+    fetch("http://renderws:4000/stats")
       .then((res) => res.json())
       .then((response) => {
         setStats(response);
@@ -20,7 +21,8 @@ const Stats = (props) => {
   }, [setStats]);
 
   const handleDelete = (id) => {
-    fetch("http://localhost:4000/stats/delete", {
+    //fetch("http://localhost:4000/stats/delete", {
+    fetch("http://renderws:4000/stats/delete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),

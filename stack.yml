@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - dbconfig:/data/configdb
+      - dbdata:/data/db
+
+  backend:
+    image: apiserver
+    ports:
+      - "4000:4000"
+
+  frontend:
+    image: nginx
+    volumes:
+      - ./web/build:/usr/share/nginx/html
+    ports:
+      - "80:80"
+
+volumes:
+  dbconfig:
+    external: true
+  dbdata:
+    external: true

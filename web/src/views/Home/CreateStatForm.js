@@ -20,7 +20,8 @@ const CreateStatForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:4000/stats/create", {
+    //fetch("http://localhost:4000/stats/create", {
+    fetch("http://renderws:4000/stats/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
